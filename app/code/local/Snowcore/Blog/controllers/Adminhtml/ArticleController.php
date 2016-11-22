@@ -1,13 +1,6 @@
 <?php
 class Snowcore_Blog_Adminhtml_ArticleController extends Mage_Adminhtml_Controller_Action
 {
-    /*protected function _initAction()
-    {
-        $this->loadLayout()
-            ->_setActiveMenu('blog/article')
-            ->_addBreadcrumb(Mage::helper('adminhtml')->__('Articles Manager'), Mage::helper('adminhtml')->__('Articles Manager'));
-        return $this;
-    }*/
 
     public function indexAction()
     {
@@ -29,6 +22,33 @@ class Snowcore_Blog_Adminhtml_ArticleController extends Mage_Adminhtml_Controlle
         $this->loadLayout()->_setActiveMenu('blog');
         $this->_addContent($this->getLayout()->createBlock('blog/adminhtml_articles'));
         $this->renderLayout();
+    }
+
+    public function saveAction()
+    {
+        if ($data = $this->getRequest()->getPost()) {
+            try {
+                $model = Mage::getModel('blog/article');
+                $model->setData($data)->setId($this->getRequest()->getParam('id'));
+                if(!$model->getCreated()){
+                    $model->setCreated(now());
+                }
+                $model->save();
+
+                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('Articles was saved successfully'));
+                Mage::getSingleton('adminhtml/session')->setFormData(false);
+                $this->_redirect('*/*/');
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                Mage::getSingleton('adminhtml/session')->setFormData($data);
+                $this->_redirect('*/*/edit', array(
+                    'id' => $this->getRequest()->getParam('id')
+                ));
+            }
+            return;
+        }
+        Mage::getSingleton('adminhtml/session')->addError($this->__('Unable to find item to save'));
+        $this->_redirect('*/*/');
     }
 
 

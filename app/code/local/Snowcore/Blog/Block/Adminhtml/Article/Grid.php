@@ -53,8 +53,6 @@ class Snowcore_Blog_Block_Adminhtml_Article_Grid extends Mage_Adminhtml_Block_Wi
         return $this;
     }
 
-
-
     public function getRowUrl($row)
     {
         return $this->getUrl('*/*/edit', array('id' => $row->getId()));
