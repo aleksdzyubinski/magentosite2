@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<layout>
+    <blog_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+
+        <reference name="content">
+            <block type="blog/article" name="article" template="blog/index.phtml"/>
+        </reference>
+
+    </blog_index_index>
+
+    <default>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="blog"><label>Testimonials</label>
+                <url helper="blog/getTestimonialsUrl"/>
+            </action>
+        </reference>
+    </default>
+
+    <default>
+    <reference name="head">
+        <action method="addItem"><type>skin_css</type><name>css/testimonials.css</name></action>
+    </reference>
+    </default>
+
+</layout>

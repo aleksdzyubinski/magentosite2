@@ -1,0 +1,23 @@
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $collection = $this->getCollection();?>
+        <?php echo $this->showTopPage(); ?>
+<?php if($collection->getSize()): ?>
+    <div style="padding-top: 0px; margin: 0 auto">
+    <?php foreach ($collection as $item): ?>
+        <div class="hero">
+            <?php echo $item->getContent(); ?>
+            <?php echo ' (' .$item->getCreatedDate() . ')'; ?>
+        </div>
+        <div id="customers-name">
+            <?php $customer = Mage::getModel('customer/customer')->load($item->getCustomerId()); ?>
+            <?php echo  $customer->getName(); ?>
+        </div>
+    <?php endforeach; ?>
+    </div>
+    <div class="pagination">
+    <?php echo $this->getPagerHtml(); ?>
+    </div>
+<?php else: ?>
+    <br><p><?php echo $this->__('The collection is empty.'); ?>
+    </p>
+<?php endif ?>
