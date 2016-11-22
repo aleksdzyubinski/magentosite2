@@ -19,7 +19,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
         $fieldset = $form->addFieldset('article_form', array('legend' => Mage::helper('blog/article')->__('Articles Information')));
 
 
-        $fieldset->addField('content', 'textarea', array(
+        $fieldset->addField('content', 'text', array(
             'label' => Mage::helper('blog/article')->__('Content'),
             'required' => true,
             'name' => 'content',
@@ -32,6 +32,15 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
         $form->setValues($model->getData());
 
         $this->setForm($form);
+
+        if($data = Mage::getSingleton('adminhtml/session')->getFormData()){
+            $form->setValues($data);
+        } else {
+            $form->setValues($model->getData());
+        }
+
+        return parent::_prepareForm();
+
     }
 
 }
