@@ -1,0 +1,110 @@
+
+#customers-name{
+	margin-top: 25px; 
+	margin-left: 5%; 
+	margin-bottom: 30px; 
+	font-weight: bold; 
+	text-transform: capitalize;
+}
+
+.hero {
+	position:relative;
+	background-color: #f3f3f3;
+	height: auto;
+	/*height:50px !important;*/
+	/*width:100% !important;*/
+	border-radius: 3px;
+	padding: 10px;
+	margin-left: 25px;
+}
+
+.hero:after {
+	content:'';
+	position: absolute;
+	top: 100%;
+	left: 5%;
+	margin-left: 0px;
+	width: 0;
+	height: 0;
+	border-top: solid 20px #f3f3f3;
+	border-left: solid 20px transparent;
+	border-right: solid 20px transparent;
+}
+
+.pagination {
+	border-bottom: 1px solid #ededed;
+	border-top: 1px solid #ededed;
+	margin: 25px 0px 25px 25px;
+	/*height: 57px;*/
+	padding: 10px;
+}
+
+.pagination .pager.pager-no-toolbar{
+	float: none;
+	margin-bottom: 0px;
+}
+.pagination .pager.pager-no-toolbar .count-container{
+	
+	float: left;	
+}
+
+.pagination .pager.pager-no-toolbar .pages strong{
+	font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+	display: inline;
+	float: left;
+	box-sizing: inherit;
+	padding-right: 10px;
+}
+
+.pagination .pager.pager-no-toolbar .pages ol{
+	display: inline;
+	box-sizing: inherit;
+}
+
+.pagination .pager.pager-no-toolbar .pages{
+	display: inline;
+	box-sizing: content-box;
+}
+
+select {
+	border-radius: 5px;
+	border-width: 1px;
+}
+
+
+#login-text{
+	float: right;
+	text-transform: uppercase;
+}
+
+.top-page-container{
+	margin: auto;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 20px 0px 20px 15px;
+	margin-bottom: 20px;
+}
+
+.top-page-container h1{
+	float:left;
+	color: black;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	
+}
+
+.top-page-container button{
+	float: right;
+	color: white;
+	background-color: #1ebd9d;
+	box-shadow: none;
+	border: 0px;
+	font-weight: bold;
+	padding: 7px;
+}
+
+.top-page-container textarea{
+	margin-top: 20px;
+	max-width: 100%;
+	resize: none;
+}
