@@ -10,8 +10,8 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit extends Mage_Adminhtml_Block_Wi
 
     protected function _construct()
     {
-        $this->_blockGroup = 'blog/article'; //???????
-        $this->_controller = 'adminhtml_articles';
+        $this->_blockGroup = 'blog'; //???????
+        $this->_controller = 'adminhtml_article';
     }
 
     public function getHeaderText()
@@ -19,11 +19,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit extends Mage_Adminhtml_Block_Wi
         $helper = Mage::helper('blog/article'); //??????????
         $model = Mage::registry('current_article');
 
-        if ($model->getId()) {
-            return $helper->__("Edit Article item '%s'", $this->escapeHtml($model->getTitle()));
-        } else {
-            return $helper->__("Add Article item");
-        }
+        return $helper->__("Редактирование отзыва номер '%s'", $this->escapeHtml($model->getId()));
     }
 
 }

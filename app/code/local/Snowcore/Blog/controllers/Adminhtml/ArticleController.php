@@ -4,8 +4,8 @@ class Snowcore_Blog_Adminhtml_ArticleController extends Mage_Adminhtml_Controlle
 
     public function indexAction()
     {
-        $this->loadLayout()->_setActiveMenu('articles');
-        $this->_addContent($this->getLayout()->createBlock('blog/adminhtml_articles'));
+        $this->loadLayout();//->_setActiveMenu('blog/article');
+        //$this->_addContent($this->getLayout()->createBlock('blog/adminhtml_article'));
         $this->renderLayout();
     }
 
@@ -20,7 +20,7 @@ class Snowcore_Blog_Adminhtml_ArticleController extends Mage_Adminhtml_Controlle
         Mage::register('current_article', Mage::getModel('blog/article')->load($id));
 
         $this->loadLayout()->_setActiveMenu('blog');
-        $this->_addContent($this->getLayout()->createBlock('blog/adminhtml_articles'));
+        $this->_addContent($this->getLayout()->createBlock('blog/adminhtml_article_edit'));
         $this->renderLayout();
     }
 
@@ -35,7 +35,7 @@ class Snowcore_Blog_Adminhtml_ArticleController extends Mage_Adminhtml_Controlle
                 }
                 $model->save();
 
-                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('Articles was saved successfully'));
+                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('Testimonials was saved successfully'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 $this->_redirect('*/*/');
             } catch (Exception $e) {
@@ -57,7 +57,7 @@ class Snowcore_Blog_Adminhtml_ArticleController extends Mage_Adminhtml_Controlle
         if ($id = $this->getRequest()->getParam('id')) {
             try {
                 Mage::getModel('blog/article')->setId($id)->delete();
-                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was deleted successfully'));
+                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('Testimonial was deleted successfully'));
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 $this->_redirect('*/*/edit', array('id' => $id));
@@ -68,14 +68,14 @@ class Snowcore_Blog_Adminhtml_ArticleController extends Mage_Adminhtml_Controlle
 
     public function massDeleteAction()
     {
-        $news = $this->getRequest()->getParam('articles', null);
+        $testimonials = $this->getRequest()->getParam('article', null);
 
-        if (is_array($news) && sizeof($news) > 0) {
+        if (is_array($testimonials) && sizeof($testimonials) > 0) {
             try {
-                foreach ($news as $id) {
+                foreach ($testimonials as $id) {
                     Mage::getModel('blog/article')->setId($id)->delete();
                 }
-                $this->_getSession()->addSuccess($this->__('Total of %d news have been deleted', sizeof($news)));
+                $this->_getSession()->addSuccess($this->__('Total of %d testimonials have been deleted', sizeof($testimonials)));
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             }

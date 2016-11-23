@@ -7,31 +7,48 @@
  */
 class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
-
     protected function _prepareForm()
     {
+        echo '<h1>Тут будет форма для редактирования отзывов</h1>';
+
+        $helper = Mage::helper('blog');
         $model = Mage::registry('current_article');
 
-        $form = new Varien_Data_Form();
+        $form = new Varien_Data_Form(array(
+            'id' => 'edit_form',
+            'action' => $this->getUrl('*/*/save', array(
+                'id' => $this->getRequest()->getParam('id')
+            )),
+            'method' => 'post',
+            'enctype' => 'multipart/form-data'
+        ));
 
         $this->setForm($form);
 
-        $fieldset = $form->addFieldset('article_form', array('legend' => Mage::helper('blog/article')->__('Articles Information')));
+        $fieldset = $form->addFieldset('news_form', array('legend' => $helper->__('Testimonial Information')));
 
-
-        $fieldset->addField('content', 'text', array(
+        $fieldset->addField('content', 'textarea', array(
             'label' => Mage::helper('blog/article')->__('Content'),
             'required' => true,
             'name' => 'content',
         ));
 
-        $form->setMethod('post');
-        $form->setUseContainer(true);
-        $form->setId('edit_form');
-        $form->setAction($this->getUrl('*/*/save'));
-        $form->setValues($model->getData());
+        $fieldset->addField('created_date', 'text', array(
+            'label' => Mage::helper('blog/article')->__('Created Date'),
+            'required' => false,
+            'disabled'=> 'disabled',
+            'name' => 'created_date',
+        ));
 
-        $this->setForm($form);
+
+        $fieldset->addField('customer_id', 'text', array(
+            'label' => Mage::helper('blog/article')->__('Customers name'),
+            'required' => false,
+            'disabled'=> 'disabled',
+            'name' => 'customer_id',
+        ));
+
+        $form->setUseContainer(true);
 
         if($data = Mage::getSingleton('adminhtml/session')->getFormData()){
             $form->setValues($data);

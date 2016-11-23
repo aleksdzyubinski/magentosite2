@@ -4,7 +4,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Grid extends Mage_Adminhtml_Block_Wi
     public function __construct()
     {
         parent::__construct();
-        $this->setId('blogArticleGrid');
+        $this->setId('articleGrid');
         $this->setDefaultSort('article_id');
         $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
@@ -44,7 +44,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Grid extends Mage_Adminhtml_Block_Wi
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('article_id');
-        $this->getMassactionBlock()->setFormFieldName('articles');
+        $this->getMassactionBlock()->setFormFieldName('article');
 
         $this->getMassactionBlock()->addItem('delete', array(
             'label' => $this->__('Delete'),
@@ -53,8 +53,8 @@ class Snowcore_Blog_Block_Adminhtml_Article_Grid extends Mage_Adminhtml_Block_Wi
         return $this;
     }
 
-    public function getRowUrl($row)
+    public function getRowUrl($model)
     {
-        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/*/edit', array('id' => $model->getId()));
     }
 }
