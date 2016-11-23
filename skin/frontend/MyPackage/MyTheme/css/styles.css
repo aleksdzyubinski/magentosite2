@@ -10666,3 +10666,14 @@ div.calendar table td.button {
   color: inherit;
   text-transform: none;
 }
+
+
+#select-language{
+	color: #3FD0C6;
+	border:0px;
+    outline:0px;
+	background-color: #E2E4E4;
+	appearance: none;
+	-webkit-appearance: none;
+  -moz-appearance: none;
+}
