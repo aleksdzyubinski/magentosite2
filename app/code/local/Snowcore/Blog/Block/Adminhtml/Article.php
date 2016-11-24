@@ -8,7 +8,7 @@ class Snowcore_Blog_Block_Adminhtml_Article extends Mage_Adminhtml_Block_Widget_
         $this->_blockGroup = 'blog';
         $this->_controller = 'adminhtml_article';
         $this->_headerText = Mage::helper('blog/article')->__('Testimonials Management');
-        $this->removeButton('add');
+        //$this->removeButton('add');
 
     }
 }
