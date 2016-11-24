@@ -49,7 +49,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
         $fieldset->addField('customer_id', 'select', array(
             'label' => Mage::helper('blog/article')->__('Customers name'),
             'required' => true,
-            'values'    => Mage::getModel('blog/article')->getAllOptions(),
+            'values'    => Mage::getModel('blog/article')->getAllNames(),
             'name' => 'customer_id',
         ));
 
