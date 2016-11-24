@@ -10,16 +10,21 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit extends Mage_Adminhtml_Block_Wi
 
     protected function _construct()
     {
-        $this->_blockGroup = 'blog'; //???????
+        $this->_blockGroup = 'blog';
         $this->_controller = 'adminhtml_article';
     }
 
     public function getHeaderText()
     {
-        $helper = Mage::helper('blog/article'); //??????????
+        $helper = Mage::helper('blog/article');
         $model = Mage::registry('current_article');
 
-        return $helper->__("Редактирование отзыва номер '%s'", $this->escapeHtml($model->getId()));
+        if ($model->getId()) {
+            return $helper->__("Редактирование отзыва номер '%s'", $this->escapeHtml($model->getId()));
+        } else {
+            return $helper->__("Добавление нового отзыва");
+        }
+
     }
 
 }

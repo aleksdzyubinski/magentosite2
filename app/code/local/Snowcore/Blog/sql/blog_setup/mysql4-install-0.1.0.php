@@ -3,14 +3,22 @@ $installer = $this;
 
 $installer->startSetup();
 
-$installer->run(" 
-DROP TABLE IF EXISTS {$this->getTable('blog_articles')};
-CREATE TABLE {$this->getTable('blog_articles')} (
- `article_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
- `content` text,
- `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
- PRIMARY KEY (`article_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
-    ");
+$table = $installer->getConnection()
+    ->newTable($installer->getTable('blog_articles'))
+    ->addColumn('article_id', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
+        'identity'  => true,
+        'nullable'  => false,
+        'primary'   => true,
+    ), 'Testimonial ID')
+
+    ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+        'nullable'  => false,
+    ), 'Content')
+
+    ->addColumn('created_date', Varien_Db_Ddl_Table::TYPE_DATE, null, array(
+        'nullable'  => false,
+        'default' => Mage::getModel('core/date')->date(),
+    ), 'Created Date');
+$installer->getConnection()->createTable($table);
 
 $installer->endSetup();

@@ -33,18 +33,23 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
             'name' => 'content',
         ));
 
-        $fieldset->addField('created_date', 'text', array(
+        $dateFormatIso = Mage::app()->getLocale()->getDateFormat(
+            Mage_Core_Model_Locale::FORMAT_TYPE_SHORT
+        );
+
+        $fieldset->addField('created_date', 'date', array(
             'label' => Mage::helper('blog/article')->__('Created Date'),
-            'required' => false,
-            'disabled'=> 'disabled',
+            'required' => true,
             'name' => 'created_date',
+            'style' => 'weidth: 280px',
+            'image'     => $this->getSkinUrl('images/grid-cal.gif'),
+            'format'    => $dateFormatIso,
         ));
 
-
-        $fieldset->addField('customer_id', 'text', array(
+        $fieldset->addField('customer_id', 'select', array(
             'label' => Mage::helper('blog/article')->__('Customers name'),
-            'required' => false,
-            'disabled'=> 'disabled',
+            'required' => true,
+            'values'    => Mage::getModel('blog/article')->getAllOptions(),
             'name' => 'customer_id',
         ));
 
