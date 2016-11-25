@@ -22,8 +22,10 @@ class Snowcore_Blog_IndexController extends Mage_Core_Controller_Front_Action
 
     $testimonialText = Mage::app()->getRequest()->getParam('textareaTestimonialName');
 
+    $date = Mage::getModel('core/date')->date();
+
     if(strlen($testimonialText)>0) {
-        $data = array('content' => $testimonialText, 'customer_id' => $customerId);
+        $data = array('content' => $testimonialText, 'created_date' => $date, 'customer_id' => $customerId);
         $model = Mage::getModel('blog/article');
         try {
             $model->setData($data)->save();

@@ -9,9 +9,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
 {
     protected function _prepareForm()
     {
-        echo '<h1>Тут будет форма для редактирования отзывов</h1>';
-
-        $helper = Mage::helper('blog');
+        $helper = Mage::helper('blog/article');
         $model = Mage::registry('current_article');
 
         $form = new Varien_Data_Form(array(
@@ -47,9 +45,9 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
         ));
 
         $fieldset->addField('customer_id', 'select', array(
-            'label' => Mage::helper('blog/article')->__('Customers name'),
+            'label' => Mage::helper('blog/article')->__('Customer Name'),
             'required' => true,
-            'values'    => Mage::getModel('blog/article')->getAllNames(),
+            'values'    => Mage::getModel('blog/article')->getAllOptions(),
             'name' => 'customer_id',
         ));
 

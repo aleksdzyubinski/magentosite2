@@ -17,7 +17,8 @@ $table = $installer->getConnection()
 
     ->addColumn('created_date', Varien_Db_Ddl_Table::TYPE_DATE, null, array(
         'nullable'  => false,
-        'default' => Mage::getModel('core/date')->date(),
+        //'default' => Zend_Date::now()->get('YYYY-MM-dd'),
+        //'default' => Mage::getModel('core/date')->date(),
     ), 'Created Date');
 $installer->getConnection()->createTable($table);
 
