@@ -20,9 +20,9 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit extends Mage_Adminhtml_Block_Wi
         $model = Mage::registry('current_article');
 
         if ($model->getId()) {
-            return $helper->__("Редактирование отзыва номер '%s'", $this->escapeHtml($model->getId()));
+            return $helper->__("Editing testimonial number '%s'", $this->escapeHtml($model->getId()));
         } else {
-            return $helper->__("Добавление нового отзыва");
+            return $helper->__("Add a new testimonial");
         }
 
     }

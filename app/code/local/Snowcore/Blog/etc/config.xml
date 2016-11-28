@@ -1,7 +1,7 @@
 <config>
     <modules>
         <Snowcore_Blog>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </Snowcore_Blog>
     </modules>
     <frontend>

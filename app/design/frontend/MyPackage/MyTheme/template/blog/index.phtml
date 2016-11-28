@@ -1,6 +1,18 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php $collection = $this->getCollection();?>
-        <?php echo $this->showTopPage(); ?>
+
+<form id="testimonials-form" method="post" action="index/submitTestimonials">
+<div class="top-page-container">
+<h1>Testimonials</h1>
+    <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+        <button type="submit" name="submit-testimonial">SUBMIT YOUR TESTIMONIAL</button>
+        <textarea id="textareaTestimonial" name="textareaTestimonialName" placeholder="Enter your feedback here..."></textarea>
+        <?php else: ?>
+        <div id="login-text">To leave a feedback you need to log in</div>
+        <?php endif ?>
+        </div>
+</form>
+
 <?php if($collection->getSize()): ?>
     <div style="padding-top: 0px; margin: 0 auto">
     <?php foreach ($collection as $item): ?>
@@ -18,6 +30,6 @@
     <?php echo $this->getPagerHtml(); ?>
     </div>
 <?php else: ?>
-    <br><p><?php echo $this->__('The collection is empty.'); ?>
+    <br><p><?php echo $this->__('No testomonials were added. Log in to be the first...'); ?>
     </p>
 <?php endif ?>

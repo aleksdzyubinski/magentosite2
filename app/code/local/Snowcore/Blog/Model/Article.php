@@ -14,9 +14,8 @@ class Snowcore_Blog_Model_Article extends Mage_Core_Model_Abstract
         $options = array();
 
         foreach ($customerData as $item){
-
-            $customer = Mage::getModel('customer/customer')->load($item->getEntityId());
-            $options[$item->getEntityId()] = $customer->getName();
+            $customer = Mage::getModel('customer/customer')->load($item->getId());
+            $options[$item->getId()] = $customer->getName();
         }
         return $options;
 

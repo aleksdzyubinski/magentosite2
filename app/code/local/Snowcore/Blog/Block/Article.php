@@ -31,24 +31,4 @@ class Snowcore_Blog_Block_Article extends Mage_Core_Block_Template
         return $this->getChildHtml('pager');
     }
 
-    public function showTopPage()
-    {
-        echo '<form id="testimonials-form" method="post" action="index/submitTestimonials"> ';
-        echo '<div class="top-page-container">';
-        echo "<h1>Testimonials</h1>";
-        if (Mage::getSingleton('customer/session')->isLoggedIn())
-        {
-            echo '<button type="submit" name="submit-testimonial">SUBMIT YOUR TESTIMONIAL</button>';
-            echo '<textarea id="textareaTestimonial" name="textareaTestimonialName" placeholder="Enter your feedback here..."></textarea>';
-        }
-        else{
-            echo '<div id="login-text">';
-            echo 'To leave a feedback you need to log in ';
-            echo '</div>';
-        }
-        echo '</div>';
-        echo '</form>';
-    }
-
-
 }
