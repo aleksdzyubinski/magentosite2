@@ -103,6 +103,10 @@ select {
 	padding: 8px 15px 8px 15px;
 }
 
+.top-page-container button:hover{
+	opacity: 0.8;
+}
+
 .top-page-container textarea{
 	margin-top: 20px;
 	max-width: 100%;
