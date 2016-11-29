@@ -1300,7 +1300,7 @@ a.button:hover {
 .main-container{
   position: relative;
   max-width: 1050px;
-  padding-top: 0px;
+  padding-top: 20px;
   margin: 0 auto;
   background: #FFFFFF;
 }
@@ -1314,11 +1314,12 @@ a.button:hover {
 
 @media only screen and (min-width: 480px) {
   .main-container{
-    padding: 0px;
+	padding: 25px 15px 15px 15px;
   }
   .footer-container {
     padding-left: 15px;
 	padding-right: 15px;
+	margin-bottom: 30px;
   }
   
 }
@@ -3178,7 +3179,6 @@ body {
   min-height: 100%;
   margin: 0 auto;
   background-image: url("../images/media/bg.jpg");
-  /*background: #FFFFFF;*/
 }
 
 .wrapper:after {
@@ -10683,8 +10683,9 @@ div.calendar table td.button {
 	color: #3FD0C6;
 	border:0px;
     outline:0px;
-	background-color: #E2E4E4;
+	background-color: transparent;
+	/*background-color: #E2E4E4;*/
 	appearance: none;
 	-webkit-appearance: none;
-  -moz-appearance: none;
+	-moz-appearance: none;
 }
