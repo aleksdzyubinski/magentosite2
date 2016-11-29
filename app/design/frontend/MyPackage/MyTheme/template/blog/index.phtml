@@ -16,14 +16,16 @@
 <?php if($collection->getSize()): ?>
     <div style="padding-top: 0px; margin: 0 auto">
     <?php foreach ($collection as $item): ?>
-        <div class="hero">
-            <?php echo $item->getContent(); ?>
-            <?php echo ' (' .$item->getCreatedDate() . ')'; ?>
-        </div>
-        <div id="customers-name">
-            <?php $customer = Mage::getModel('customer/customer')->load($item->getCustomerId()); ?>
-            <?php echo  $customer->getName(); ?>
-        </div>
+        <?php if($item->getIsActive()): ?>
+            <div class="hero">
+                <?php echo $item->getContent(); ?>
+                <?php echo ' (' .$item->getCreatedDate() . ')'; ?>
+            </div>
+            <div id="customers-name">
+                <?php $customer = Mage::getModel('customer/customer')->load($item->getCustomerId()); ?>
+                <?php echo  $customer->getName(); ?>
+            </div>
+        <?php endif ?>
     <?php endforeach; ?>
     </div>
     <div class="pagination">

@@ -38,6 +38,13 @@ class Snowcore_Blog_Block_Adminhtml_Article_Grid extends Mage_Adminhtml_Block_Wi
             'width'     => '150px',
             'index'     => 'created_date',
         ));
+
+        $this->addColumn('is_active', array(
+            'header'    => Mage::helper('blog')->__('Active Status'),
+            'align'     => 'right',
+            'width'     => '100px',
+            'index'     => 'is_active',
+        ));
         return parent::_prepareColumns();
     }
 

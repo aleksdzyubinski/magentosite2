@@ -10,7 +10,7 @@ class Snowcore_Blog_Block_Article extends Mage_Core_Block_Template
     public function __construct()
     {
         parent::__construct();
-        $collection = Mage::getModel('blog/article')->getCollection();
+        $collection = Mage::getModel('blog/article')->getCollection()->addFieldToFilter('is_active', true);
         $collection->setOrder('created_date', 'DESC');
         $this->setCollection($collection);
     }

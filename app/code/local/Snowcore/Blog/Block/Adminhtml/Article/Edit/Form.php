@@ -51,6 +51,14 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
             'name' => 'customer_id',
         ));
 
+        $fieldset->addField('is_active', 'select', array(
+            'label' => Mage::helper('blog')->__('Active Status'),
+            'required' => true,
+            'values' => array('0' => 'false','1' => 'true'),
+            'name' => 'is_active',
+        ));
+
+
         $form->setUseContainer(true);
 
         if($data = Mage::getSingleton('adminhtml/session')->getFormData()){
