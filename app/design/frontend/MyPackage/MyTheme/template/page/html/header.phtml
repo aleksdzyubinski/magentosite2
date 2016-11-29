@@ -36,11 +36,16 @@
    ul.hr li {
     display: inline; /* Отображать как строчный элемент */
     margin-right: 10px; /* Отступ слева */
+	text-decoration: none;
+   }
+   ul.hr li a:hover{
+	color: #1ebd9d;
+	text-decoration: underline;
    }
   </style>
 
         <div class="before-header" style="height: 55px">
-        <div class="store-language-container" style="float: right">
+        <div class="store-language-container" style="float: right; background-color: transparent">
                     <?php echo $this->getChildHtml('store_language') ?>
         </div>
            <div class="header-links">
@@ -58,12 +63,12 @@
     </div>
     <div style="float: right">
           <ul class="hr" style="color: white">
-		    <li>HOME</li>
-		    <li>ABOUT</li>
-		    <li>CUSTOMER SERVICE</li>
-		    <li>SITE MAP</li>
-            <li>SEARCH TERMS</li>
-            <li>CONTACTS</li>
+		    <li><a href="#">HOME</a></li>
+		    <li><a href="/about-magento-demo-store">ABOUT</a></li>
+		    <li><a href="/customer-service">CUSTOMER SERVICE</a></li>
+		    <li><a href="/sitemap.xml">SITE MAP</a></li>
+            <li><a href="#">SEARCH TERMS</a></li>
+            <li><a href="/contacts">CONTACTS</a></li>
 	        </ul>  
         </div>
 </div>

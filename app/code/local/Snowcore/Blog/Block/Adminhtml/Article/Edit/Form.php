@@ -9,7 +9,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
 {
     protected function _prepareForm()
     {
-        $helper = Mage::helper('blog/article');
+        $helper = Mage::helper('blog');
         $model = Mage::registry('current_article');
 
         $form = new Varien_Data_Form(array(
@@ -26,7 +26,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
         $fieldset = $form->addFieldset('news_form', array('legend' => $helper->__('Testimonial Information')));
 
         $fieldset->addField('content', 'textarea', array(
-            'label' => Mage::helper('blog/article')->__('Content'),
+            'label' => Mage::helper('blog')->__('Content'),
             'required' => true,
             'name' => 'content',
         ));
@@ -36,7 +36,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
         );
 
         $fieldset->addField('created_date', 'date', array(
-            'label' => Mage::helper('blog/article')->__('Created Date'),
+            'label' => Mage::helper('blog')->__('Created Date'),
             'required' => true,
             'name' => 'created_date',
             'style' => 'weidth: 280px',
@@ -45,7 +45,7 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
         ));
 
         $fieldset->addField('customer_id', 'select', array(
-            'label' => Mage::helper('blog/article')->__('Customer Name'),
+            'label' => Mage::helper('blog')->__('Customer Name'),
             'required' => true,
             'values'    => Mage::getModel('blog/article')->getAllOptions(),
             'name' => 'customer_id',

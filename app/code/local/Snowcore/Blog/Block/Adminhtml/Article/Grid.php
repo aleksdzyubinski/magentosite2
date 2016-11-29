@@ -20,20 +20,20 @@ class Snowcore_Blog_Block_Adminhtml_Article_Grid extends Mage_Adminhtml_Block_Wi
     protected function _prepareColumns()
     {
         $this->addColumn('article_id', array(
-         'header'    => Mage::helper('blog/article')->__('ID'),
+         'header'    => Mage::helper('blog')->__('ID'),
          'align'     => 'center',
          'width'     => '50px',
          'index'     => 'article_id',
         ));
 
         $this->addColumn('title', array(
-         'header'    => Mage::helper('blog/article')->__('Content'),
+         'header'    => Mage::helper('blog')->__('Content'),
          'align'     => 'left',
          'index'     => 'content',
         ));
 
         $this->addColumn('created_date', array(
-            'header'    => Mage::helper('blog/article')->__('Created'),
+            'header'    => Mage::helper('blog')->__('Created'),
             'align'     => 'right',
             'width'     => '150px',
             'index'     => 'created_date',
