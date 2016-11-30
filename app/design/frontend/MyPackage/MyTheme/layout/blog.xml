@@ -24,5 +24,4 @@
         <action method="addItem"><type>skin_css</type><name>css/testimonials.css</name></action>
     </reference>
     </default>
-
 </layout>
