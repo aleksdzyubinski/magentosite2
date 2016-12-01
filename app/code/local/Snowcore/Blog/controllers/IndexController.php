@@ -17,14 +17,9 @@ class Snowcore_Blog_IndexController extends Mage_Core_Controller_Front_Action
 
     public function submitTestimonialsAction()
     {
-        /*
-         * $customerData = Mage::getSingleton('customer/session')->getCustomer();
-        $testimonialText = Mage::app()->getRequest()->getParam('textareaTestimonialName');
+        $customerData = Mage::getSingleton('customer/session')->getCustomer();
+        $testimonialText = $this->getRequest()->getParam('textareaTestimonialName');
         $date = Mage::getModel('core/date')->date();
-
-        echo '<script>';
-        echo 'console.log('. json_encode( $testimonialText ) .')';
-        echo '</script>';
 
         $valid = new Zend_Validate_NotEmpty();
         if($valid->isValid($testimonialText))
@@ -33,31 +28,15 @@ class Snowcore_Blog_IndexController extends Mage_Core_Controller_Front_Action
             $model = Mage::getModel('blog/article');
             try {
                 $model->setData($data)->save();
-                //
-                //$result = "success";
-                //echo json_decode($result);
-                $this->getResponse()->setBody(true);
+                $this->getResponse()->setBody($this->__('Testimonial successfully added'));
                 return;
 
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
-
         }
         else{
-            //$this->getResponse()->setBody(false);
-            //return;
-            $result = "Enter testimonial";
-            echo json_decode($result);
+            $this->getResponse()->setBody($this->__('Testimonial textfield is empty'));
         }
-        */
-        echo '<script>';
-        echo 'console.log("teeeest")';
-        echo '</script>';
-        $this->getResponse()->setBody(true);
-        return;
-        //$this->_redirectUrl('/blog/');
-        //return json_last_error_msg()
-
     }
 }

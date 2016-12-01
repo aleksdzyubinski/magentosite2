@@ -1,19 +1,13 @@
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php $collection = $this->getCollection();?>
 
-<!--<form id="testimonials-form" method="post" action="index/submitTestimonials">
--->
-<form id="testimonials-form" method="post" action="" enctype="multipart/form-data">
+<form id="testimonials-form" action="<?php echo Mage::getBaseUrl() . 'blog/index/submitTestimonials' ?>" method="post">
 
 <div class="top-page-container">
 <h1>Testimonials</h1>
     <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-        <button id="submit-btn" type="submit" name="submit-testimonial" onclick="doAjax()">SUBMIT YOUR TESTIMONIAL</button>
-        <textarea id="textareaTestimonial" name="textareaTestimonialName" placeholder="Enter your feedback here..."></textarea>
+        <button id="submit-btn" type="submit" name="submit-testimonial" onclick="testimonialsForm.submit(this); return false;">SUBMIT YOUR TESTIMONIAL</button>
+        <textarea id="textareaTestimonial" class="input-text required-entry" name="textareaTestimonialName" placeholder="Enter your feedback here..."></textarea>
         <?php else: ?>
         <div id="login-text">To leave a feedback you need to log in</div>
         <?php endif ?>
@@ -43,34 +37,30 @@
     </p>
 <?php endif ?>
 
-
 <script type="text/javascript">
-
-/*
-        $("#submit-btn").click(function () {
-            doAjax();
-            //$("#textareaTestimonial").css("border","5px solid red");
-            //$("#textareaTestimonial").text("Lol, enter something").css("color", "blue");
-        })(jQuery);
-*/
-        function doAjax() {
-            console.log('test');
-            //$.ajax({
+    //<![CDATA[
+    var testimonialsForm = new VarienForm('testimonials-form', true);
+    testimonialsForm.submit = function(button, url) {
+        if (this.validator.validate()) {
+            var data = jQuery('#testimonials-form').serialize();
             jQuery.ajax({
-                url: "<?php echo Mage::getBaseUrl() . 'blog/index/submitTestimonials' ?>",
+                url: this.form.action,
                 type: "POST",
-                //data: $("#textareaTestimonial"),
-                //data : $("#testimonials-form").serializeArray(),
-                dataType: 'json',
-                success: function () {
-                    console.log('test2');
-                    jQuery("#textareaTestimonial").css("border", "3px solid green");
+                data: data,
+                dataType: 'text',
+                success: function (msg) {
+                    jQuery("#textareaTestimonial").css("border", "2px solid #1ebd9d");
+                    alert(msg);
+                    jQuery("#textareaTestimonial").css("border", "1px solid silver");
+                    jQuery("#textareaTestimonial").val('');
                 },
                 error: function () {
-                    console.log('test3');
                     jQuery("#textareaTestimonial").css("border", "3px solid red");
                 }
             });
+
+            return false;
         }
+    }.bind(testimonialsForm);
+    //]]>
 </script>
-<script>jQuery.noConflict();</script>
