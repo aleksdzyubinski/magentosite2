@@ -52,9 +52,9 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
         ));
 
         $fieldset->addField('is_active', 'select', array(
-            'label' => Mage::helper('blog')->__('Active Status'),
+            'label' => Mage::helper('blog')->__('Status'),
             'required' => true,
-            'values' => array('0' => 'false','1' => 'true'),
+            'values' => array('0' => 'Disabled','1' => 'Enabled'),
             'name' => 'is_active',
         ));
 

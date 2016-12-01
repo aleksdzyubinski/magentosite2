@@ -1,18 +1,31 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php $collection = $this->getCollection();?>
 
-<form id="testimonials-form" action="<?php echo Mage::getBaseUrl() . 'blog/index/submitTestimonials' ?>" method="post">
-
 <div class="top-page-container">
 <h1>Testimonials</h1>
     <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-        <button id="submit-btn" type="submit" name="submit-testimonial" onclick="testimonialsForm.submit(this); return false;">SUBMIT YOUR TESTIMONIAL</button>
-        <textarea id="textareaTestimonial" class="input-text required-entry" name="textareaTestimonialName" placeholder="Enter your feedback here..."></textarea>
+        <button id="submit-btn" type="submit" name="submit-testimonial" onclick="myFunction();">SUBMIT YOUR TESTIMONIAL</button>
         <?php else: ?>
         <div id="login-text">To leave a feedback you need to log in</div>
         <?php endif ?>
         </div>
-</form>
+
+<!--<form id="testimonials-form" action="--><?php //echo Mage::getBaseUrl() . 'blog/index/submitTestimonials' ?><!--" method="post">-->
+<!---->
+<!--<div class="top-page-container">-->
+<!--<h1>Testimonials</h1>-->
+<!--    --><?php //if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+<!--        <button id="submit-btn" type="submit" name="submit-testimonial" onclick="testimonialsForm.submit(this); return false;">SUBMIT YOUR TESTIMONIAL</button>-->
+<!--        <textarea id="textareaTestimonial" class="input-text required-entry" name="textareaTestimonialName" placeholder="Enter your feedback here..."></textarea>-->
+<!--        --><?php //else: ?>
+<!--        <div id="login-text">To leave a feedback you need to log in</div>-->
+<!--        --><?php //endif ?>
+<!--        </div>-->
+<!--</form>-->
+
+<div id="myPopup">
+    Этот блок скоро исчезнет
+</div>
 
 <?php if($collection->getSize()): ?>
     <div style="padding-top: 0px; margin: 0 auto">
@@ -36,6 +49,15 @@
     <br><p><?php echo $this->__('No testimonials were added. Log in to be the first...'); ?>
     </p>
 <?php endif ?>
+
+<script>
+    // When the user clicks on <div>, open the popup
+    function myFunction() {
+        console.log('test')
+        var popup = document.getElementById('myPopup');
+        popup.classList.toggle('show');
+    }
+</script>
 
 <script type="text/javascript">
     //<![CDATA[

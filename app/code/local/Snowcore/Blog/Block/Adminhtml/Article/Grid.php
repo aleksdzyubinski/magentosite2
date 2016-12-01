@@ -40,10 +40,12 @@ class Snowcore_Blog_Block_Adminhtml_Article_Grid extends Mage_Adminhtml_Block_Wi
         ));
 
         $this->addColumn('is_active', array(
-            'header'    => Mage::helper('blog')->__('Active Status'),
+            'header'    => Mage::helper('blog')->__('Status'),
             'align'     => 'right',
             'width'     => '100px',
             'index'     => 'is_active',
+            'type'      => 'options',
+            'options'   => array(0 => 'Disabled',1 => 'Enabled'),
         ));
         return parent::_prepareColumns();
     }
