@@ -28,6 +28,8 @@ class Snowcore_Blog_Adminhtml_ArticleController extends Mage_Adminhtml_Controlle
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
+
+
                 $model = Mage::getModel('blog/article');
                 $model->setData($data)->setId($this->getRequest()->getParam('id'));
                 if(!$model->getCreated()){

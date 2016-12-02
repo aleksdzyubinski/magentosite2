@@ -18,8 +18,6 @@ class Snowcore_Blog_Model_Article extends Mage_Core_Model_Abstract
             $options[$item->getId()] = $customer->getName();
         }
         return $options;
-
-
     }
 
 }

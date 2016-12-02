@@ -41,7 +41,8 @@ class Snowcore_Blog_Block_Adminhtml_Article_Edit_Form extends Mage_Adminhtml_Blo
             'name' => 'created_date',
             'style' => 'weidth: 280px',
             'image'     => $this->getSkinUrl('images/grid-cal.gif'),
-            'format'    => $dateFormatIso,
+            'format'    => 'yyyy-MM-dd',
+            //'format'    => $dateFormatIso,
         ));
 
         $fieldset->addField('customer_id', 'select', array(

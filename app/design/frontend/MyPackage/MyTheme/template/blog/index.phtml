@@ -8,23 +8,18 @@
         <?php else: ?>
         <div id="login-text">To leave a feedback you need to log in</div>
         <?php endif ?>
-        </div>
+</div>
 
-<!--<form id="testimonials-form" action="--><?php //echo Mage::getBaseUrl() . 'blog/index/submitTestimonials' ?><!--" method="post">-->
-<!---->
-<!--<div class="top-page-container">-->
-<!--<h1>Testimonials</h1>-->
-<!--    --><?php //if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-<!--        <button id="submit-btn" type="submit" name="submit-testimonial" onclick="testimonialsForm.submit(this); return false;">SUBMIT YOUR TESTIMONIAL</button>-->
-<!--        <textarea id="textareaTestimonial" class="input-text required-entry" name="textareaTestimonialName" placeholder="Enter your feedback here..."></textarea>-->
-<!--        --><?php //else: ?>
-<!--        <div id="login-text">To leave a feedback you need to log in</div>-->
-<!--        --><?php //endif ?>
-<!--        </div>-->
-<!--</form>-->
-
-<div id="myPopup">
-    Этот блок скоро исчезнет
+<!-- Модальное Окно  -->
+<div id="overlay">
+    <form id="testimonials-form" method="post" action="">
+    <div class="popup">
+        <h1>Enter testimonial</h1>
+        <textarea id="textareaTestimonial" class="input-text required-entry" name="textareaTestimonialName" placeholder="Enter your feedback here..."></textarea>
+        <button id="send-testimonial" type="submit" name="send-testimonial" onclick="testimonialsForm.submit(this); return false;">SEND TESTIMONIAL</button>
+        <button class="close" title="Закрыть" onclick="document.getElementById('overlay').style.display='none'; return false;"></button>
+    </div>
+    </form>
 </div>
 
 <?php if($collection->getSize()): ?>
@@ -50,14 +45,16 @@
     </p>
 <?php endif ?>
 
-<script>
-    // When the user clicks on <div>, open the popup
-    function myFunction() {
-        console.log('test')
-        var popup = document.getElementById('myPopup');
-        popup.classList.toggle('show');
+<script type="text/javascript">
+   function myFunction() {
+        jQuery("#h2-msg").remove();
+        jQuery("#textareaTestimonial").show();
+        jQuery("#textareaTestimonial").val('');
+        jQuery("#send-testimonial").show();
+        document.getElementById('overlay').style.display='block';
     }
 </script>
+
 
 <script type="text/javascript">
     //<![CDATA[
@@ -66,15 +63,16 @@
         if (this.validator.validate()) {
             var data = jQuery('#testimonials-form').serialize();
             jQuery.ajax({
-                url: this.form.action,
+                url: '<?php echo Mage::getBaseUrl() . 'blog/index/submitTestimonials' ?>',
+                //url: this.form.action,
                 type: "POST",
                 data: data,
                 dataType: 'text',
                 success: function (msg) {
-                    jQuery("#textareaTestimonial").css("border", "2px solid #1ebd9d");
-                    alert(msg);
-                    jQuery("#textareaTestimonial").css("border", "1px solid silver");
-                    jQuery("#textareaTestimonial").val('');
+                    //jQuery("#textareaTestimonial").css("border", "2px solid #1ebd9d");
+                    jQuery("#textareaTestimonial").hide();
+                    jQuery("#send-testimonial").hide();
+                    jQuery(".popup").append('<h2 id="h2-msg">' + msg + '</h2>');
                 },
                 error: function () {
                     jQuery("#textareaTestimonial").css("border", "3px solid red");
