@@ -21,6 +21,8 @@ class Snowcore_Blog_IndexController extends Mage_Core_Controller_Front_Action
         $testimonialText = $this->getRequest()->getParam('textareaTestimonialName');
         $date = Mage::getModel('core/date')->date();
 
+        $dataArray = array('comment' => $testimonialText, 'customer' =>  $customerData);
+
         $valid = new Zend_Validate_NotEmpty();
         if($valid->isValid($testimonialText))
         {
@@ -28,6 +30,9 @@ class Snowcore_Blog_IndexController extends Mage_Core_Controller_Front_Action
             $model = Mage::getModel('blog/article');
             try {
                 $model->setData($data)->save();
+
+                Mage::dispatchEvent('submit_testimonials_action', $dataArray);
+
                 $this->getResponse()->setBody($this->__('Testimonial successfully added'));
                 return;
 
@@ -38,5 +43,6 @@ class Snowcore_Blog_IndexController extends Mage_Core_Controller_Front_Action
         else{
             $this->getResponse()->setBody($this->__('Testimonial textfield is empty'));
         }
+
     }
 }

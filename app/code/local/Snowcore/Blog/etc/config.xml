@@ -73,6 +73,29 @@
         </layout>
     </adminhtml>
     <global>
+
+        <template>
+            <email>
+                <testimonials_email_template module="blog">
+                    <label>Testimonials email module</label>
+                    <file>testimonial_add_success.html</file>
+                    <type>html</type>
+                </testimonials_email_template>
+            </email>
+        </template>
+
+        <events>
+            <submit_testimonials_action>
+                <observers>
+                    <testimonials_submit_observer>
+                        <type>singleton</type>
+                        <class>blog/observer</class>
+                        <method>sendSuccessEmail</method>
+                    </testimonials_submit_observer>
+                </observers>
+            </submit_testimonials_action>
+        </events>
+
         <models>
             <blog>
                 <class>Snowcore_Blog_Model</class>
